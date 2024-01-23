@@ -20,11 +20,9 @@ public class BinarySearch {
 
              if(valueAtMidpoint==searchValue){
                  return midpoint+1;
-             }
-             if(searchValue < valueAtMidpoint){
+             }else if(searchValue < valueAtMidpoint){
                  upperBound= midpoint-1;
-             }
-             if(searchValue > valueAtMidpoint) {
+             }else if(searchValue > valueAtMidpoint) {
                  lowerBound = midpoint + 1;
              }
         }
