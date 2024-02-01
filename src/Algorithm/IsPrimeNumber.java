@@ -6,6 +6,8 @@ public class IsPrimeNumber {
         System.out.println(isPrime(number));
     }
 
+
+    /** Algorithm's Time Complexity : O(N) */
     static boolean isPrime(int number){
         for(int i = 2 ; i < number ; i++){
             if(number % i==0) {
