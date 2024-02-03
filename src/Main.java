@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +16,67 @@ public class Main {
 //        for(String s : things){
 //            System.out.println("Here's a thing: "+ s);
 //        }
+        int [] numbers = {2,3,5,1,6,2,7};
+        System.out.println(greatestNumber(numbers));
+    }
+
+
+    /** Time Complexity O(N2)*/
+    public static boolean hasDuplicates(int [] numbers){
+        int steps =0;
+       for(int i = 0 ; i< numbers.length ; i++){
+           for(int j = 0 ; j < numbers.length ; j++){
+               steps++;
+               if(i!=j && numbers[i]== numbers[j]){
+                   return true;
+               }
+           }
+       }
+       System.out.println("Steps: "+steps);
+       return false;
+    }
+
+    /** Time Complexity O(N)*/
+    public static boolean hasDuplicatesV1(int [] numbers){
+        int steps=0;
+        int maxValue = getMaxValue(numbers);
+
+       int[] existingNumbers = new int[maxValue+1];
+
+       for(int i = 0 ; i< numbers.length ; i++){
+           steps++;
+           if(existingNumbers[numbers[i]]==1){
+               System.out.println("Steps: "+steps);
+               return true;
+           }else{
+               existingNumbers[numbers[i]]=1;
+           }
+       }
+        System.out.println("Steps: "+ steps);
+       return false;
+    }
+
+    static int getMaxValue(int [] arr){
+        int max = Integer.MIN_VALUE;
+        for(int value :arr){
+            if(value > max){
+                max=value;
+            }
+        }
+        return max;
+    }
+
+    static int greatestNumber(int[] arr){
+        int maxValue = 0;
+        int steps = 0;
+        for(int n :arr){
+            steps++;
+            if(n>maxValue){
+                maxValue=n;
+            }
+        }
+        System.out.println("Steps: "+steps);
+        return maxValue;
     }
 
 
