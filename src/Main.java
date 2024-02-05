@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,11 +18,29 @@ public class Main {
         int [] numbers = {2,3,5,1,6,2,7};
 //        System.out.println(greatestNumber(numbers));
 
-        int limit = 10;
-        printEvenNumber(10);
-        prinEvenNumbersTwo(10);
+//        int limit = 10;
+//        printEvenNumber(10);
+//        prinEvenNumbersTwo(10);
+//        int [] arr1 ={3,1,4,2};
+//        int [] arr2 ={4,5,3,6};
+//        int [] result = intersection(arr1,arr2);
+//        System.out.println(Arrays.toString(result));
+
     }
 
+    public int averageOfEvenNumbers(int [] arr){
+        int sum = 0;
+        int evenNumbers=0;
+
+        for(int i : arr){
+            if(i%2==0){
+                sum+=i;
+                evenNumbers++;
+            }
+        }
+
+        return sum/evenNumbers;
+    }
 
     /** Time Complexity O(N2)*/
     public static boolean hasDuplicates(int [] numbers){
@@ -105,6 +122,23 @@ public class Main {
         System.out.println("Steps: "+steps);
     }
 
+    public static int[] intersection(int[]arr1,int[] arr2){
+        ArrayList <Integer> al = new ArrayList<>();
+        for(int i = 0 ; i<arr1.length ; i++){
+            for(int j=0; j<arr2.length ; j++){
+                if(arr1[i]== arr2[j]){
+                    al.add(arr1[i]);
+                }
+            }
+        }
+        int [] result = new int[al.size()];
+        for(int i =0 ; i< al.size() ; i++){
+            result[i]=al.get(i);
+        }
+
+        return result;
+
+    }
 
 }
 
