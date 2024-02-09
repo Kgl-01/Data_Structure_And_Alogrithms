@@ -1,11 +1,13 @@
 package Exercises;
 
+import java.util.HashMap;
+
 public class ArraySubset {
     public static void main(String[] args) {
         char [] arr1 = {'a','b','c','d','e','f'};
-        char [] arr2 = {'b','d','f','h'};
+        char [] arr2 = {'b','d','f'};
 
-        System.out.println(isSubset(arr1,arr2));
+        System.out.println(isSubsetTwo(arr1,arr2));
     }
 
 
@@ -35,6 +37,32 @@ public class ArraySubset {
             if(!foundMatch)return false;
         }
 
+        return true;
+    }
+
+    static boolean isSubsetTwo(char[]arr1,char[]arr2){
+        char [] largeArray;
+        char [] smallerArray;
+
+        HashMap<Character,Boolean> hashMap = new HashMap<>();
+
+        if(arr1.length > arr2.length){
+            largeArray = arr1;
+            smallerArray=arr2;
+        }else{
+            largeArray=arr2;
+            smallerArray= arr1;
+        }
+
+        for(char c : largeArray){
+            hashMap.put(c,true);
+        }
+
+        for(char c :smallerArray){
+            if(hashMap.get(c)==null){
+                return false;
+            }
+        }
         return true;
     }
 }
