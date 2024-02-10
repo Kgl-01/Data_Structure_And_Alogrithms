@@ -11,7 +11,7 @@ public class FindDuplicate {
     }
 
 
-    /** Optimized version Time Complexity O(N)*/
+    /** Optimized version Time Complexity O(N) assuming there's one duplicate*/
     static String findDuplicateTwo(String[] arr){
         HashMap<String,Boolean> map = new HashMap<>();
 
@@ -27,7 +27,7 @@ public class FindDuplicate {
     }
 
 
-    /** Brute Force Approach Time Complexity O(N^2)*/
+    /** Brute Force Approach Time Complexity O(N^2) assuming there's one duplicate*/
     static String findDuplicate(String[]arr){
         for(int i = 0 ; i< arr.length ; i++){
             for(int j=0; j<arr.length ; j++){
