@@ -12,6 +12,7 @@ public class MissingLetter {
     }
 
 
+    /** Time Complexity O(N) using hashmap*/
     static char missingLetterTwo(String str){
         Map<Character,Boolean> map = new HashMap<>();
         str=str.toLowerCase();
@@ -32,7 +33,7 @@ public class MissingLetter {
 
     }
 
-    /** Time Complexity 0(N)*/
+    /** Time Complexity O(N)*/
     static char missingLetter(String str){
         boolean [] alphabetPresent = new boolean[26];
         str=str.toLowerCase();
