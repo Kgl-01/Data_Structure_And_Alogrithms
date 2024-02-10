@@ -1,13 +1,39 @@
 package Exercises;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FindNonDuplicateElements {
     public static void main(String[] args) {
         String word = "minimum";
         System.out.println(findNonDuplicate(word));
+        System.out.println(findNonDuplicateOptimised(word));
     }
 
+
+
+    /**Optimised version Time Complexity O(N)*/
+    static String findNonDuplicateOptimised(String str){
+        Map<String,Integer> map = new HashMap<>();
+
+        for(String s : str.split("")){
+            if(map.get(s)!=null){
+                map.put(s,map.get(s)+1);
+            }else{
+                map.put(s,1);
+            }
+        }
+
+        for(String s :str.split("")){
+            if(map.get(s)==1){
+                return s;
+            }
+        }
+
+
+        return "No non-duplicates found";
+    }
 
     /**Brute force approach Time Complexity O(N^2)*/
     static String findNonDuplicate(String str){
