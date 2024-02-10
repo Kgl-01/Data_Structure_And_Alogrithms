@@ -1,32 +1,80 @@
 package DataStructure;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.List;
 
-public class Stack {
-   private List<Object> list;
+public class Stack <T>{
+   class Node<T>{
+      private T data;
+      private Node next;
+
+      public Node(T data) {
+         this.data = data;
+         this.next = null;
+      }
+   }
+
+   private Node<T> top;
+   int size;
 
    public Stack(){
-     this.list = new ArrayList<>();
+      this.top=null;
+      this.size=0;
    }
 
-   public void push(Object element){
-      this.list.add(element);
-   }
-
-   public Object peek(){
-      return list.get(this.list.size()-1);
-   }
-
-   public Object pop(){
-      if(!isEmpty()){
-         return this.list.remove(this.list.size()-1);
-      }
-      return null;
+   public void push(T data){
+      Node <T> newNode = new Node<>(data);
+      newNode.next=top;
+      top=newNode;
+      size++;
    }
 
    public boolean isEmpty(){
-      return this.list.isEmpty();
+      return size==0;
+   }
+
+   public void print(){
+      Node <T> current = top;
+      System.out.print("Stack: ");
+      while(current!=null){
+         System.out.print(current.data+" ");
+         current=current.next;
+      }
+      System.out.println();
+   }
+
+   public T peek(){
+      if(isEmpty()){
+         throw new EmptyStackException();
+      }
+      return top.data;
+   }
+
+   public T pop(){
+      if(isEmpty()){
+         throw new EmptyStackException();
+      }
+      T data = top.data;
+      top = top.next;
+      size--;
+      return data;
+   }
+
+   public int size(){
+      return size;
+   }
+
+   public static void main(String[] args) {
+      Stack<Integer> stack= new Stack<>();
+      stack.push(1);
+      stack.push(44);
+      stack.push(10);
+
+      stack.print();
+      System.out.println(stack.size());
    }
 
 }
