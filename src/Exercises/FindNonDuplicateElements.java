@@ -27,6 +27,6 @@ public class FindNonDuplicateElements {
                 return String.valueOf((char)('a'+ i));
             }
         }
-        return "No duplicates found";
+        return "No non-duplicates found";
     }
 }
