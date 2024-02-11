@@ -1,13 +1,9 @@
 package DataStructure;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EmptyStackException;
-import java.util.List;
 
 public class Stack <T>{
-   class Node<T>{
+  private class Node<T>{
       private T data;
       private Node next;
 
@@ -37,7 +33,7 @@ public class Stack <T>{
    }
 
    public void print(){
-      Node <T> current = top;
+      Node<T> current = top;
       System.out.print("Stack: ");
       while(current!=null){
          System.out.print(current.data+" ");
@@ -73,8 +69,10 @@ public class Stack <T>{
       stack.push(44);
       stack.push(10);
 
+      stack.pop();
       stack.print();
       System.out.println(stack.size());
+       System.out.println(stack.peek());
    }
 
 }
