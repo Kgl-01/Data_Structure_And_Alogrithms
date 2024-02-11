@@ -5,7 +5,7 @@ import DataStructure.Stack;
 public class StackBasedCodeLinter {
     public static void main(String[] args) {
         Stack<Character> stack = new Stack<>();
-        String str = "(var x = {y:[1,2,3})";
+        String str = "(var x = {y:[1,2,3]}";
 
         String result = lint(str);
 
@@ -30,7 +30,7 @@ public class StackBasedCodeLinter {
         }
 
         if(!stack.isEmpty()){
-            return "Doesn't have opening brace";
+            return "Doesn't have closing brace";
         }
         return "No issues found";
     }
