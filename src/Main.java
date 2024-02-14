@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
@@ -25,8 +28,27 @@ public class Main {
 //        int [] arr2 ={4,5,3,6};
 //        int [] result = intersection(arr1,arr2);
 //        System.out.println(Arrays.toString(result));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        try {
+            System.out.println("Enter your name:");
+            String name = reader.readLine();
+            if(name.isEmpty()){
+                throw new IOException("no input provided");
+            }
+            System.out.println("Hello, " + name + "!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
 
     public int averageOfEvenNumbers(int [] arr){
         int sum = 0;
