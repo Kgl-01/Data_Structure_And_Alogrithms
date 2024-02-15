@@ -3,7 +3,9 @@ package Exercises.Recursion;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class RecursionsExcersise {
@@ -29,7 +31,36 @@ public class RecursionsExcersise {
 
       int noOfStairs=5;
       System.out.println("Possible paths to reach the top: "+ numberOfPaths(noOfStairs));
+
+        System.out.println(anagramsOf("abcd"));
     }
+
+
+    public static List<String> anagramsOf(String string) {
+        List <String> collections = new ArrayList<>();
+
+        if(string.length()==1){
+            collections.add(string);
+            return collections;
+        }
+
+
+        List <String> subStringOfAnagrams = anagramsOf(string.substring(1));
+
+
+        for(String subStringAnagram: subStringOfAnagrams){
+            for(int i = 0 ; i<= subStringAnagram.length() ; i++){
+                StringBuilder copy = new StringBuilder(subStringAnagram);
+                copy.insert(i, string.charAt(0));
+                collections.add(copy.toString());
+            }
+        }
+
+
+        return collections;
+
+    }
+
 
 
 
