@@ -18,6 +18,9 @@ public class RecursionsExcersise {
 
       int [] arr = {1,2,3,4,5};
 
+      System.out.println("Even Numbers: "+evenNumbers(arr));
+
+
       System.out.println("Sum: "+ sum(arr,arr.length-1));
       doubleArray(arr,0);
       System.out.println(Arrays.toString(arr));
@@ -33,8 +36,42 @@ public class RecursionsExcersise {
       System.out.println("Possible paths to reach the top: "+ numberOfPaths(noOfStairs));
 
         System.out.println(anagramsOf("abcd"));
+
+        String [] stringArray = {"abc","c","def","ghij"};
+
+        System.out.println("Total Characters: "+ totalCharCount(stringArray,0));
+
+
     }
 
+
+    static List <Integer> evenNumbers(int[]array){
+        List<Integer> result = new ArrayList<>();
+        if (array.length == 0)
+            return result;
+
+        if (array[0] % 2 == 0) {
+            result.add(array[0]);
+        }
+
+        int[] newArray = new int[array.length - 1];
+        System.arraycopy(array, 1, newArray, 0, newArray.length);
+
+        result.addAll(evenNumbers(newArray));
+
+        return result;
+
+
+
+    }
+
+
+    static int totalCharCount(String [] arr, int index){
+        if(index==arr.length){
+            return 0;
+        }
+        return arr[index].length()+totalCharCount(arr,index+1);
+    }
 
     public static List<String> anagramsOf(String string) {
         List <String> collections = new ArrayList<>();
