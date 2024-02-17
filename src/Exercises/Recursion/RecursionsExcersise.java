@@ -41,7 +41,36 @@ public class RecursionsExcersise {
 
         System.out.println("Total Characters: "+ totalCharCount(stringArray,0));
 
+        System.out.println("Triangular Numbers: "+ triangularNumbers(6));
 
+        System.out.println("Index of X: "+findIndexOfX("abcdefghijklmnopqrstuvwxyz"));
+
+        System.out.println("unique paths from start to finish: "+uniquePaths(7,3));
+    }
+
+
+    static int uniquePaths(int rows, int columns){
+        if(rows==1||columns==1){
+            return 1;
+        }
+        return uniquePaths(rows-1,columns)+uniquePaths(rows,columns-1);
+    }
+
+
+    static int findIndexOfX(String str){
+
+        if(str.charAt(0)=='x'){
+            return 0;
+        }
+
+        return findIndexOfX(str.substring(1))+1;
+    }
+
+    static int triangularNumbers(int n){
+        if(n==0){
+            return 0;
+        }
+        return triangularNumbers(n-1)+n;
     }
 
 
@@ -60,9 +89,6 @@ public class RecursionsExcersise {
         result.addAll(evenNumbers(newArray));
 
         return result;
-
-
-
     }
 
 
