@@ -46,6 +46,29 @@ public class RecursionsExcersise {
         System.out.println("Index of X: "+findIndexOfX("abcdefghijklmnopqrstuvwxyz"));
 
         System.out.println("unique paths from start to finish: "+uniquePaths(7,3));
+
+
+        System.out.println("Maximum number: "+ maxNumber(new int[]{1,2,3,4}));
+
+    }
+
+
+
+    static int maxNumber(int [] arr){
+
+        System.out.println("Recursion");
+
+        if(arr.length==1){
+            return arr[0];
+        }
+
+        int maxValue = maxNumber(Arrays.copyOfRange(arr,1,arr.length));
+
+        if(arr[0]> maxValue){
+            return arr[0];
+        }else{
+            return maxValue;
+        }
     }
 
 
