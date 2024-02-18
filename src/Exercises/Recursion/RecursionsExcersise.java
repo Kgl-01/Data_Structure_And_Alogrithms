@@ -47,17 +47,22 @@ public class RecursionsExcersise {
 
         System.out.println("unique paths from start to finish: "+uniquePaths(7,3));
 
-
         System.out.println("Maximum number: "+ maxNumber(new int[]{1,2,3,4}));
+
+        System.out.println("Fibonacci Number: "+fibonacci(6));
 
     }
 
 
+    static int fibonacci(int n){
+        if(n==1||n==0){
+            return n;
+        }
+        return fibonacci(n-2)+fibonacci(n-1);
+    }
+
 
     static int maxNumber(int [] arr){
-
-        System.out.println("Recursion");
-
         if(arr.length==1){
             return arr[0];
         }
