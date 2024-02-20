@@ -1,42 +1,37 @@
-package Exercises;
+package Algorithm.SortingAlgorithm;
 
 import java.util.Arrays;
 
-public class Partitioning {
+public class QuickSorting {
     public static void main(String[] args) {
-        int [] arr = {0,5,2,1,6,3};
-        partitioning(arr,0,arr.length-1);
+        int [] arr = {7,6,5,3,2,1,4};
+        quickSort(arr,0,arr.length-1);
 
         System.out.println(Arrays.toString(arr));
-
-        quickSorting(arr,0,arr.length-1);
-        System.out.println("2nd"+Arrays.toString(arr));
     }
 
 
-    static void quickSorting(int [] arr ,int leftIndex,int rightIndex){
-        /** Base Case */
-        if(rightIndex-leftIndex <=0){
+    static void quickSort(int [] arr, int leftIndex,int rightIndex){
+
+        if(rightIndex-leftIndex<=0){
             return;
         }
 
         int pivotIndex = partitioning(arr,leftIndex,rightIndex);
 
-        quickSorting(arr, leftIndex,pivotIndex-1);
+        quickSort(arr,leftIndex,pivotIndex-1);
+        quickSort(arr,pivotIndex+1,rightIndex);
 
-        quickSorting(arr,pivotIndex+1,rightIndex);
     }
 
-
-    static int partitioning(int [] arr, int leftPointer ,int rightPointer){
+    static int partitioning(int [] arr,int leftPointer,int rightPointer){
         int pivotIndex=rightPointer;
-        int pivot = arr[pivotIndex];
+        int pivot= arr[pivotIndex];
 
-        rightPointer-=1;
-
+        rightPointer--;
 
         while(true){
-            while(arr[leftPointer] < pivot){
+            while(arr[leftPointer]<pivot){
                 leftPointer++;
             }
 
@@ -52,6 +47,7 @@ public class Partitioning {
                 arr[rightPointer]=temp;
                 leftPointer++;
             }
+
         }
 
         int temp = arr[leftPointer];
