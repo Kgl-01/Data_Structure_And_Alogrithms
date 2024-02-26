@@ -5,15 +5,35 @@ import java.util.Arrays;
 public class QuickSorting {
     public static void main(String[] args) {
         int [] arr = {7,6,5,3,2,1,4};
-        quickSort(arr,0,arr.length-1);
-
-        System.out.println(Arrays.toString(arr));
+//        quickSort(arr,0,arr.length-1);
+//        System.out.println(Arrays.toString(arr));
+        System.out.println(quickSelect(arr,1, 0,arr.length-1));
     }
 
+
+
+    /** Quick Select algo is a combination of partitioning and hybrid between quick sort and
+     binary search . Time Complexity of the algorithm is O(N) */
+    static int quickSelect(int [] arr,int kthLowestValue, int leftIndex , int rightIndex){
+        if (rightIndex - leftIndex <= 0) {
+            return arr[leftIndex];
+        }
+
+        int pivotIndex = partitioning(arr,leftIndex, rightIndex);
+
+        if (kthLowestValue < pivotIndex) {
+            return quickSelect(arr,kthLowestValue, leftIndex, pivotIndex - 1);
+        } else if (kthLowestValue > pivotIndex) {
+            return quickSelect(arr,kthLowestValue, pivotIndex + 1, rightIndex);
+        } else {
+            return arr[pivotIndex];
+        }
+    }
 
     static void quickSort(int [] arr, int leftIndex,int rightIndex){
 
         if(rightIndex-leftIndex<=0){
+            System.out.println("Exit");
             return;
         }
 
