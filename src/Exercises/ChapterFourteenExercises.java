@@ -1,6 +1,9 @@
 package Exercises;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ChapterFourteenExercises {
     public static void main(String[] args) {
@@ -11,6 +14,33 @@ public class ChapterFourteenExercises {
         int []numbers = {9,3,2,5,6,7,1,0,4};
         System.out.println(findMissingNumber(numbers));
 
+        int [] repeats ={3,1,3,3,2};
+
+        System.out.println(majorityElement(repeats,repeats.length));
+
+    }
+
+    static int majorityElement(int a[], int size)
+    {
+        // your code here
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i = 0 ; i<size ; i++){
+            if(map.get(a[i])!=null){
+
+                    map.put(a[i],(map.get(a[i])+1));
+
+            }else{
+                map.put(a[i],1);
+            }
+        }
+
+       for(int i : a){
+           if(map.get(i)>(size/2)){
+               return i;
+           }
+       }
+
+        return -1;
     }
 
 
