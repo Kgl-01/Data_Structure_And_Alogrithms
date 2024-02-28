@@ -56,6 +56,7 @@ public class LinkedList <T>{
 
     /**returns index of the value. Time Complexity O(N)*/
     public int indexOf(T value){
+
         int index =0;
         Node<T>currentNode = headNode;
         while(currentNode!=null){
@@ -67,6 +68,83 @@ public class LinkedList <T>{
         }
         return -1;
     }
+
+    public boolean isEmpty(){
+        return size==0;
+    }
+
+    public void insertAtIndex(int index , T data){
+        Node<T> newNode = new Node<>(data);
+
+        if(index<0||index>=size){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        if(index==0){
+            newNode.next = headNode;
+            headNode=newNode;
+            size++;
+            return;
+        }
+
+        Node <T> currentNode = headNode;
+        for(int i=0 ; i<index-1;i++){
+            currentNode=currentNode.next;
+        }
+
+        newNode.next=currentNode.next;
+        currentNode.next=newNode;
+        size++;
+    }
+
+
+    public void removeAtIndex(int index){
+        if(index<0||index>=size){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        if(index==0){
+            headNode= headNode.next;
+            size--;
+            return;
+        }
+
+        Node<T>currentNode= headNode;
+        for(int i=0;i<index-1 ; i++){
+            currentNode=currentNode.next;
+        }
+
+        currentNode.next=currentNode.next.next;
+
+        size--;
+    }
+
+    public  void removeFirst(){
+        if(headNode==null||headNode.next==null){
+            headNode=null;
+            return;
+        }
+        headNode=headNode.next;
+        size--;
+    }
+
+    public void removeAtLast(){
+        if (headNode == null || headNode.next == null) {
+            headNode = null;
+            return;
+        }
+
+        Node<T> currentNode = headNode;
+
+        while (currentNode.next.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = null;
+        size--;
+    }
+
+
 
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -86,11 +164,22 @@ public class LinkedList <T>{
         list.add("upon");
         list.add("a");
         list.add("time");
+        list.insertAtIndex(0,"Hello");
+        list.insertAtIndex(3,"OG");
+        list.removeAtIndex(3);
+        list.removeAtIndex(list.size()-1);
 
-        System.out.println(list);
-        System.out.println(list.size());
-        System.out.println(list.get(list.size()-1));
-        System.out.println(list.indexOf("upon"));
+        list.removeAtIndex(list.size()-1);
+
+        list.removeFirst();
+        list.removeAtLast();
+
+        System.out.println("List size"+ list.size());
+        System.out.println(list);//{once, upon, a, time}
+        System.out.println(list.size());//4
+        System.out.println(list.get(list.size()-1));//time
+        System.out.println(list.indexOf("once"));//1
+        System.out.println(list.isEmpty()); //false
     }
 
 }
