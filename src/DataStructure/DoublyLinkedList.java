@@ -1,8 +1,8 @@
 package DataStructure;
 
 public class DoublyLinkedList <T>{
-    private class Node<T>{
-        private T data;
+     class Node<T>{
+         T data;
         Node next;
         Node previous;
 
@@ -13,7 +13,7 @@ public class DoublyLinkedList <T>{
         }
     }
 
-    private Node headNode;
+    Node headNode;
     private Node tailNode;
     private int size;
 
@@ -37,6 +37,12 @@ public class DoublyLinkedList <T>{
         size++;
     }
 
+    public T removeFromFront(){
+        Node<T>removedNode = headNode;
+        headNode=headNode.next;
+        return removedNode.data;
+    }
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("{");
@@ -53,16 +59,17 @@ public class DoublyLinkedList <T>{
         return size==0;
     }
 
+
     public int size(){
         return size;
     }
 
-    public static void main(String[] args) {
-        DoublyLinkedList<String>list = new DoublyLinkedList<>();
-        list.insertAtEnd("Once");
-        list.insertAtEnd("Upon");
-
-        System.out.println(list);
-        System.out.println(list.size());
-    }
+//    public static void main(String[] args) {
+//        DoublyLinkedList<String>list = new DoublyLinkedList<>();
+//        list.insertAtEnd("Once");
+//        list.insertAtEnd("Upon");
+//        System.out.println(list.removeFromFront());
+//        System.out.println(list);
+//        System.out.println(list.size());
+//    }
 }
