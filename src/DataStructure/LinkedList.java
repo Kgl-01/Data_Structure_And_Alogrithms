@@ -144,6 +144,20 @@ public class LinkedList <T>{
         size--;
     }
 
+    public void reverse(){
+        Node <T> previousNode = null;
+        Node <T> currentNode = headNode;
+
+        while(currentNode!=null){
+            Node <T> nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        headNode = previousNode;
+    }
+
 
 
     public String toString(){
@@ -166,13 +180,15 @@ public class LinkedList <T>{
         list.add("time");
         list.insertAtIndex(0,"Hello");
         list.insertAtIndex(3,"OG");
-        list.removeAtIndex(3);
-        list.removeAtIndex(list.size()-1);
+//        list.removeAtIndex(3);
+//        list.removeAtIndex(list.size()-1);
+//
+//        list.removeAtIndex(list.size()-1);
+//
+//        list.removeFirst();
+//        list.removeAtLast();
 
-        list.removeAtIndex(list.size()-1);
-
-        list.removeFirst();
-        list.removeAtLast();
+        list.reverse();
 
         System.out.println("List size"+ list.size());
         System.out.println(list);//{once, upon, a, time}
