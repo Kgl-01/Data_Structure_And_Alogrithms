@@ -14,6 +14,7 @@ public class Chapter03 {
     }
 
 
+    /*Time complexity O(1)*/
     public static int median(int[] arr) {
 
         int middle = (int) Math.floor(arr.length / 2);
