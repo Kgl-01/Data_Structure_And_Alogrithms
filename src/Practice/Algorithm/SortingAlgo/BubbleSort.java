@@ -2,6 +2,7 @@ package Practice.Algorithm.SortingAlgo;
 
 import java.util.Arrays;
 
+
 public class BubbleSort {
     public static void main(String[] args) {
         int[] numbers = {4, 2, 7, 1, 3};
@@ -26,6 +27,7 @@ public class BubbleSort {
     }
 
 
+    /*Approach two. Time Complexity O(N^2)*/
     public static void bubbleSortTwo(int[] arr) {
         int unsortedUntilIndex = arr.length - 1;
         boolean sorted = false;
