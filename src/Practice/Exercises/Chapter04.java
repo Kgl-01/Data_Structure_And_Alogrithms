@@ -12,6 +12,8 @@ public class Chapter04 {
         System.out.println(greatestNumber(duplicates));
     }
 
+
+    /*Time Complexity O(N^2)*/
     public static boolean hasDuplicatesV1(int[] arr) {
         int steps = 0;
 
@@ -27,6 +29,7 @@ public class Chapter04 {
         return false;
     }
 
+    /*Time Complexity O(N)*/
     public static boolean hasDuplicatesV2(int[] arr) {
         int steps = 0;
         List<Integer> list = new ArrayList<>();
@@ -41,6 +44,8 @@ public class Chapter04 {
         return false;
     }
 
+
+    /*Time Complexity O(N)*/
     public static int greatestProduct(int[] arr) {
         int greatestProductSoFar = arr[0] * arr[1];
         for (int i : arr) {
@@ -54,6 +59,8 @@ public class Chapter04 {
         return greatestProductSoFar;
     }
 
+
+    /*Time Complexity O(N)*/
     public static int greatestNumber(int[] arr) {
         int greatestValue = 0;
 
@@ -62,7 +69,7 @@ public class Chapter04 {
                 greatestValue = i;
             }
         }
-        
+
         return greatestValue;
     }
 }
