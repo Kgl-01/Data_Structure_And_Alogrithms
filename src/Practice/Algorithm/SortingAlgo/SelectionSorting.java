@@ -15,7 +15,7 @@ public class SelectionSorting {
     public static void selectionSorting(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int lowestValueIndex = i;
-            for (int j = i; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[lowestValueIndex]) {
                     lowestValueIndex = j;
                 }
