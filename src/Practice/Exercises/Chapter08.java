@@ -1,6 +1,8 @@
 package Practice.Exercises;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 public class Chapter08 {
     public static void main(String[] args) {
@@ -11,6 +13,25 @@ public class Chapter08 {
         System.out.println("Brute Force " + isSubsetArray(arr1, arr2));
         System.out.println("HashTable: " + isSubsetArray2(arr1, arr2));
 
+        System.out.println("Intersection: " + isIntersecting(arr1, arr2));
+
+    }
+
+
+    public static List isIntersecting(String[] arr1, String[] arr2) {
+        List<String> list = new ArrayList<>();
+        Hashtable<String, Integer> table = new Hashtable<>();
+
+        for (String i : arr1) {
+            table.put(i, 1);
+        }
+        for (String i : arr2) {
+            if (table.get(i) != null) {
+                list.add(i);
+            }
+        }
+
+        return list;
     }
 
 
@@ -63,7 +84,7 @@ public class Chapter08 {
                     break;
                 }
             }
-            if (isFound == false) {
+            if (!isFound) {
                 return false;
             }
         }
