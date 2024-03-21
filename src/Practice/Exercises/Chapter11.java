@@ -29,6 +29,19 @@ public class Chapter11 {
 
 
         System.out.println(anagramsOf("abcd"));
+
+
+        String[] names = {"Amma", "Hello"};
+
+        System.out.println(lengthOfStrings(names));
+    }
+
+    public static int lengthOfStrings(String[] arr) {
+        /*base case 1*/
+        if (arr.length == 0) {
+            return 0;
+        }
+        return arr[0].length() + lengthOfStrings(Arrays.copyOfRange(arr, 1, arr.length));
     }
 
     public static List<String> anagramsOf(String str) {
@@ -40,6 +53,8 @@ public class Chapter11 {
         }
 
         List<String> subProblemAnagrams = anagramsOf(str.substring(1));
+
+        System.out.println(subProblemAnagrams);
 
         for (String s : subProblemAnagrams) {
             for (int i = 0; i <= s.length(); i++) {
