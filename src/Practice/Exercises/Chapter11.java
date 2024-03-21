@@ -1,6 +1,8 @@
 package Practice.Exercises;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Chapter11 {
     public static void main(String[] args) {
@@ -19,8 +21,61 @@ public class Chapter11 {
         String s = "reverse";
         System.out.println("Reverse String: " + reverseString(s));
 
+
+        String countX = "xaxbxcxd";
+        System.out.println("CountX: " + countingX(countX));
+
+        System.out.println("Possible paths to reach top: " + reachTop(3));
+
+
+        System.out.println(anagramsOf("abcd"));
     }
 
+    public static List<String> anagramsOf(String str) {
+        List<String> list = new ArrayList<>();
+
+        if (str.length() == 1) {
+            list.add(str);
+            return list;
+        }
+
+        List<String> subProblemAnagrams = anagramsOf(str.substring(1));
+
+        for (String s : subProblemAnagrams) {
+            for (int i = 0; i <= s.length(); i++) {
+                StringBuilder copy = new StringBuilder(s);
+                copy.insert(i, str.charAt(0));
+                list.add(copy.toString());
+            }
+        }
+
+        return list;
+    }
+
+
+    public static int reachTop(int steps) {
+        if (steps == 1 || steps == 0) {
+            return 1;
+        } else if (steps < 0) {
+            return 0;
+        }
+
+        return reachTop(steps - 1) + reachTop(steps - 2) + reachTop(steps - 3);
+    }
+
+
+    public static int countingX(String str) {
+        if (str.isEmpty()) {
+            return 0;
+        }
+
+        if (str.charAt(0) == 'x' || str.charAt(0) == 'X') {
+            return 1 + countingX(str.substring(1));
+        } else {
+            return countingX(str.substring(1));
+        }
+
+    }
 
     public static String reverseString(String str) {
         if (str.length() == 1) {
