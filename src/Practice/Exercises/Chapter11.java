@@ -34,6 +34,36 @@ public class Chapter11 {
         String[] names = {"Amma", "Hello"};
 
         System.out.println(lengthOfStrings(names));
+
+        System.out.println("Triangular Numbers: " + triangularNumbers(7));
+
+        String index = "abcdefghijklmnopqrstuvwxyz";
+        System.out.println(indexOfX(index));
+
+        System.out.println(uniquePaths(7, 3));
+
+    }
+
+
+    public static int uniquePaths(int rows, int columns) {
+        if (rows == 1 || columns == 1) {
+            return 1;
+        }
+        return uniquePaths(rows, columns - 1) + uniquePaths(rows - 1, columns);
+    }
+
+    public static int indexOfX(String str) {
+        if (str.charAt(0) == 'x') {
+            return 0;
+        }
+        return 1 + indexOfX(str.substring(1));
+    }
+
+    public static int triangularNumbers(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        return n + triangularNumbers(n - 1);
     }
 
     public static int lengthOfStrings(String[] arr) {
@@ -41,8 +71,15 @@ public class Chapter11 {
         if (arr.length == 0) {
             return 0;
         }
+
+        /*base case2*/
+        /** if (arr.length == 1) {
+         return arr[0].length();
+         }*/
+
         return arr[0].length() + lengthOfStrings(Arrays.copyOfRange(arr, 1, arr.length));
     }
+
 
     public static List<String> anagramsOf(String str) {
         List<String> list = new ArrayList<>();
