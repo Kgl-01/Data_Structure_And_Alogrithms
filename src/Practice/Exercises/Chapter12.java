@@ -15,6 +15,39 @@ public class Chapter12 {
 
         Map<Integer, Integer> map = new HashMap<>();
         System.out.println(fibonacciDP(6, map));
+
+        int[] hundred = {10, 50, 60};
+        System.out.println(addUntilHundred(hundred));
+
+        Map<Integer, Integer> golombMap = new HashMap<>();
+        System.out.println(golomb(5, golombMap));
+        System.out.println(golombMap);
+    }
+
+
+    public static int golomb(int n, Map<Integer, Integer> map) {
+        if (n == 1) {
+            return 1;
+        }
+
+        if (!map.containsKey(n)) {
+            map.put(n, 1 + golomb(n - golomb(golomb(n - 1, map), map), map));
+        }
+
+        return map.get(n);
+    }
+
+
+    public static int addUntilHundred(int[] arr) {
+        if (arr.length == 0) {
+            return 0;
+        }
+        int addUntilHundredSubProblem = addUntilHundred(Arrays.copyOfRange(arr, 1, arr.length));
+
+        if ((arr[0] + addUntilHundredSubProblem) > 100) {
+            return addUntilHundredSubProblem;
+        }
+        return arr[0] + addUntilHundredSubProblem;
     }
 
 
